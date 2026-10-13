@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -52,7 +53,7 @@ namespace Library
             get { return isbn; }
             set
             {
-                if (!value.Any(char.IsDigit) && value != "")
+                if (value.Any(char.IsDigit) && value != "")
                 {
                     isbn = value;
                 }
@@ -63,11 +64,11 @@ namespace Library
             }
         }
 
-        public Book()
+        public Book(string bookTitle, string bookAuthor, string bookISBN)
         {
-            this.Title = title;
-            this.Author = author;
-            this.ISBN = isbn;
+            this.Title = bookTitle;
+            this.Author = bookAuthor;
+            this.ISBN = bookISBN;
         }
 
         public void DisplayInfo()
